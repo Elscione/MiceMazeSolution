@@ -7,7 +7,7 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.incremental.IncrementalTaskInputs
 import solution.model.SolutionMaze
 
-class SerialSolutionTask extends DefaultTask {
+class SerialSolutionTaskGroovy extends DefaultTask {
 
     @InputDirectory
     File inputDirectory

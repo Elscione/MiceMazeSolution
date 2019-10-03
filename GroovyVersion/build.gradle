@@ -1,10 +1,14 @@
+import solution.tasktypes.parallel.multitask.ParallelMultiTaskSolutionGroovy
+import solution.tasktypes.serial.SerialSolutionTaskGroovy
+import solution.tasktypes.parallel.MazeParallelTaskSolution
+
 group 'com.gradle.micemaze'
 version '1.0-SNAPSHOT'
 
 def inputFile = file(("${project.buildDir}/file/inputs"))
 def outputFile = file("${project.buildDir}/file/outputs")
 
-task serialTask(type: SerialSolutionTask) {
+task serialTask(type: SerialSolutionTaskGroovy) {
     outputDirectory = outputFile
     inputDirectory = inputFile
 }
@@ -12,4 +16,13 @@ task serialTask(type: SerialSolutionTask) {
 task parallelTask(type: MazeParallelTaskSolution) {
     outputDirectory = outputFile
     inputDirectory = inputFile
+}
+
+fileTree("${rootProject.rootDir}/inputs").files.forEach { file ->
+    tasks.register("${file.name}", ParallelMultiTaskSolutionGroovy, file,
+            new File("${project.rootDir}/outputs/${file.name.replace("input", "output")}"))
+}
+
+tasks.register("multiTaskGroovy")  {
+    dependsOn(tasks.matching { task -> task.name.startsWith("input") })
 }

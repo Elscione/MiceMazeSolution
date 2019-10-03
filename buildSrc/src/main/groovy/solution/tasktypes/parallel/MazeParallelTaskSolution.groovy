@@ -22,7 +22,7 @@ class MazeParallelTaskSolution extends DefaultTask{
     def outputDirectory
 
     @Inject
-    ParallelSolutionTask(WorkerExecutor workerExecutor) {
+    MazeParallelTaskSolution(WorkerExecutor workerExecutor) {
         this.workerExecutor = workerExecutor
     }
 
