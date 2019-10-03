@@ -1,0 +1,7 @@
+# Project exclude paths
+/.gradle/
+build
+inputs
+KotlinVersion/build
+GroovyVersion/build
+buildSrc/build

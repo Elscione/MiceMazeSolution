@@ -1,0 +1,5 @@
+rootProject.name = 'MiceMazeSolution'
+include 'KotlinVersion'
+include 'GroovyVersion'
+include 'buildSrc'
+
