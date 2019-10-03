@@ -1,8 +1,5 @@
 package solution.tasktypes.parallel.multitask
 
-import org.gradle.workers.WorkAction
-import solution.model.SolutionMaze
-
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.InputFile
@@ -12,6 +9,7 @@ import org.gradle.api.tasks.incremental.IncrementalTaskInputs
 import org.gradle.workers.WorkAction
 import org.gradle.workers.WorkParameters
 import org.gradle.workers.WorkerExecutor
+import solution.model.SolutionMaze
 
 import javax.inject.Inject
 
@@ -26,7 +24,7 @@ class ParallelMultiTaskSolutionGroovy extends DefaultTask {
     def outputFile
 
     @Inject
-    public ParallelMultiTaskSolution(WorkerExecutor workerExecutor, inputFile, outputFile) {
+    ParallelMultiTaskSolutionGroovy(WorkerExecutor workerExecutor, inputFile, outputFile) {
         this.workerExecutor = workerExecutor
         this.inputFile = inputFile
         this.outputFile = outputFile
