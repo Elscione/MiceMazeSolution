@@ -1,3 +1,15 @@
 group 'com.gradle.micemaze'
 version '1.0-SNAPSHOT'
 
+def inputFile = file(("${project.buildDir}/file/inputs"))
+def outputFile = file("${project.buildDir}/file/outputs")
+
+task serialTask(type: SerialSolutionTask) {
+    outputDirectory = outputFile
+    inputDirectory = inputFile
+}
+
+task parallelTask(type: MazeParallelTaskSolution) {
+    outputDirectory = outputFile
+    inputDirectory = inputFile
+}
